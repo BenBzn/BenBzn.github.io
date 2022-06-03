@@ -6,14 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="style.css" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
     <title>Dice game</title>
 </head>
 <body>
-    <!--new game button-->
-    <header class="d-flex justify-content-center newgame">
-        <button id="newgame" class="btn justify-content-center mt-3 startBtn">
+    <!--new game/rules button-->
+    <header class="d-flex justify-content-center p-2 newgame d-grid gap-2">
+        <img src="./images/plus.png" height="24" class="mt-4">
+        <button type="button" id="newGame" class="btn btn-danger justify-content-center mt-3 me-4 startBtn">
             New game
         </button>
+        <button type="button" class="rules btn btn-danger" data-bs-toggle="modal" data-bs-target="#rules">Rules</button>
+    <!-- Modal rules -->
+        <div class="modal fade" id="rules" tabindex="-1" aria-labelledby="rules" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Règles du jeu</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Chaque joueur possède un score temporaire (ROUND) et un score global (GLOBAL).
+                        A chaque tour, le joueur a son ROUND initialisé à 0 et peut lancer un dé autant de fois qu'il le souhaite. Le résultat d'un lancer est ajouté au ROUND.
+                    </p>
+                    <p>Lors de son tour, le joueur peut décider à tout moment de :<br>
+                        - Cliquer sur l'option "Hold" qui permet d'envoyer les points du ROUND vers le GLOBAL. Ce sera alors le tour de l'autre joueur.<br>
+                        -Lancer le dé. S'il obtient un 1, son score ROUND est perdu et c'est la fin de son tour
+                    </p>
+                    <p class="fw-bold">Le premier joueur qui atteint les 100 points sur GLOBAL gagne le jeu.</p>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">C'est bon pour moi !</button>
+                </div>
+            </div>
+            </div>
+        </div>
     </header>
     <!--Players display-->
     <main class="container-fluid d-flex justify-content-around">
@@ -27,54 +56,57 @@
         </div>
     </main>
     <!--Dice-->
-    <div id="dice" class="dicezone d-flex justify-content-center">
-        Ici le dès
+    <div class="d-flex justify-content-center mt-5">
+        <img src="./images/dice1.png" title="dice" alt="dice" id="dice">
     </div>
-    <!--Players scores && game's command-->
+    <!--Player 1 current score-->
     <section class="scoreSection container-fluid d-flex justify-content-around">
         <div class="currentScore1 p-3">
-            <p class="text-center">CURRENT</p>
+            <p class="text-center">CURRENT SCORE</p>
             <p id="currentScore1" class="text-center">0</p>
         </div>
+    <!--Players command-->
         <div class="gameBtn d-flex flex-column">
-            <button id="btnRun">
-                <p>Roll the dice</p>
+            <button type="button" id="btnRoll" class="btn btn-outline-danger fw-bold">
+                <img src="images/refresh.png" class="rerun" alt=""> Roll the dice
             </button>
-            <button id="btnHold">
-                <p>Hold</p>
+            <button type="button" id="btnHold" class="btn btn-outline-danger mt-2 fw-bold">
+                 <img src="images/save-money.png" alt="hold"> Hold points
             </button>
-        </div>    
+        </div>  
+    <!--Player 2 current score-->  
         <div class="currentScore2 p-3">
-            <p class="text-center">CURRENT</p>
+            <p class="text-center">CURRENT SCORE</p>
             <p id="currentScore2" class="text-center">0</p>
         </div>
     </section>
-     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<script src="script.js"></script>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
 </body>
 </html>

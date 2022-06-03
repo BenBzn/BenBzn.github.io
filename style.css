@@ -1,8 +1,13 @@
 body {
+    font-family: 'Lato', sans-serif;
     background: linear-gradient(to right, #F6F6F6 0% 50%, white 50% 0%);
     height: 100vh;
     width: 100vw;
     overflow: hidden
+}
+
+header {
+    margin-right: 4.5em;
 }
 
 h2 {
@@ -11,22 +16,34 @@ h2 {
 }
 
 #globalScore1, #globalScore2 {
-    font-size: 2rem;
+    font-size: 2em;
     margin-left: 2em;
 }
 
 .currentScore1, .currentScore2 {
     margin-bottom: 1em;
-    background-color: red; /*Temp color*/
+    background-color: #ff4444;
+    border: 1px solid #000000;
+    border: 1px solid #000000;
+    border-radius: 40px 40px 100px 100px;
+    -webkit-border-radius: 40px 40px 100px 100px;
+    -moz-border-radius: 40px 40px 100px 100px;
 }
+
 
 .scoreSection {
     position: fixed;
     bottom: 0;
 }
 
+button.rules {
+    height: 2.5em;
+    margin-top: 1em;
+    margin-left: 0.8em;
+}
 
-
-
-
+#dice {
+    height: 8em;
+    width: 8em;
+}
 
