@@ -28,12 +28,12 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p>Chaque joueur possède un score temporaire (ROUND) et un score global (GLOBAL).
-                        A chaque tour, le joueur a son ROUND initialisé à 0 et peut lancer un dé autant de fois qu'il le souhaite. Le résultat d'un lancer est ajouté au ROUND.
+                    <p>Chaque joueur possède un score temporaire (Affiché CURRENT) et un score global (GLOBAL).
+                        A chaque tour, le joueur a son score CURRENT initialisé à 0 et peut lancer un dé autant de fois qu'il le souhaite. Le résultat d'un lancer est ajouté au ROUND.
                     </p>
                     <p>Lors de son tour, le joueur peut décider à tout moment de :<br>
-                        - Cliquer sur l'option "Hold" qui permet d'envoyer les points du ROUND vers le GLOBAL. Ce sera alors le tour de l'autre joueur.<br>
-                        -Lancer le dé. S'il obtient un 1, son score ROUND est perdu et c'est la fin de son tour
+                        - Cliquer sur l'option "Hold" qui permet d'envoyer les points du CURRENT vers le GLOBAL. Ce sera alors le tour de l'autre joueur.<br>
+                        -Lancer le dé. S'il obtient un 1, son score CURRENT est perdu et c'est la fin de son tour
                     </p>
                     <p class="fw-bold">Le premier joueur qui atteint les 100 points sur GLOBAL gagne le jeu.</p>
                 </div>
@@ -47,11 +47,11 @@
     <!--Players display-->
     <main class="container-fluid d-flex justify-content-around">
         <div class="player1">
-            <h2>Player 1</h2>
+            <h2>Player 1 <img src="./images/reddot.png" title="dot1" alt="dot1" id="dot1"></h2>
             <p id="globalScore1" class="text-danger">0</p>
         </div>
         <div class="player2">
-            <h2>Player 2</h2>
+            <h2>Player 2 <img src="./images/reddot.png" title="dot2" alt="dot2" id="dot2"></h2>
             <p id="globalScore2" class="text-danger">0</p>
         </div>
     </main>
