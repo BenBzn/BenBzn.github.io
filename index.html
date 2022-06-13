@@ -12,14 +12,17 @@
     <title>Dice game</title>
 </head>
 <body>
-    <!--new game/rules button-->
+<!--new game/rules button-->
     <header class="d-flex justify-content-center p-2 newgame d-grid gap-2">
         <img src="./images/plus.png" height="24" class="mt-4">
         <button type="button" id="newGame" class="btn btn-danger justify-content-center mt-3 me-4 startBtn">
             New game
         </button>
         <button type="button" class="rules btn btn-danger" data-bs-toggle="modal" data-bs-target="#rules">Rules</button>
-    <!-- Modal rules -->
+<!--Dark/light thème button TEMP-->    
+        <input type="checkbox" id="darkToggle">
+        <label for="darkToggle">
+<!-- Modal rules -->
         <div class="modal fade" id="rules" tabindex="-1" aria-labelledby="rules" aria-hidden="true">
             <div class="modal-dialog">
             <div class="modal-content">
@@ -44,7 +47,7 @@
             </div>
         </div>
     </header>
-    <!--Players display-->
+<!--Players display-->
     <main class="container-fluid d-flex justify-content-around">
         <div class="player1">
             <h2>Player 1 <img src="./images/reddot.png" title="dot1" alt="dot1" id="dot1"></h2>
@@ -55,18 +58,18 @@
             <p id="globalScore2" class="text-danger">0</p>
         </div>
     </main>
-    <!--Dice-->
+<!--Dice-->
     <div class="d-flex justify-content-center mt-5">
-        <img src="./images/dice1.png" title="dice" alt="dice" id="dice">
+        <img src="./images/dice1.png" title="dice" alt="dice" id="dice" class="img-fluid">
     </div>
-    <!--Player 1 current score-->
+<!--Player 1 current score-->
     <section class="scoreSection container-fluid d-flex justify-content-around">
-        <div class="currentScore1 p-3">
+        <div class="currentScore1 p-3 col-m">
             <p class="text-center">CURRENT SCORE</p>
             <p id="currentScore1" class="text-center">0</p>
         </div>
-    <!--Players command-->
-        <div class="gameBtn d-flex flex-column">
+<!--Players command-->
+        <div class="gameBtn d-flex flex-column col-m">
             <button type="button" id="btnRoll" class="btn btn-outline-danger fw-bold">
                 <img src="images/refresh.png" class="rerun" alt=""> Roll the dice
             </button>
@@ -74,8 +77,8 @@
                  <img src="images/save-money.png" alt="hold"> Hold points
             </button>
         </div>  
-    <!--Player 2 current score-->  
-        <div class="currentScore2 p-3">
+<!--Player 2 current score-->  
+        <div class="currentScore2 p-3 col-m">
             <p class="text-center">CURRENT SCORE</p>
             <p id="currentScore2" class="text-center">0</p>
         </div>

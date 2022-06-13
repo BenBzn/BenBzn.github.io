@@ -21,7 +21,15 @@ let currentScore2 = Number(0);
 //Var for selecting player
 let currentPlayer = "player1";
 
-
+//Function that apply the reddot to the right player
+function redDotP1(){
+    dot1.style.display = 'inline-block';
+    dot2.style.display = 'none';
+};
+function redDotP2(){
+    dot1.style.display = 'none';
+    dot2.style.display = 'inline-block';
+};
 
 //Function that return integer between 1 & 6
 function getNumber() {
@@ -30,42 +38,15 @@ function getNumber() {
     return rollNumber;
 };
 
-//Display dice face according to rollnumber
+//Display dice face according to rollNumber
 function diceFace() {
     let dice = document.getElementById('dice');
     dice.src="./images/dice"+rollNumber+".png";
 };
 
-//Roll dice and add score to current
-
-// roll.addEventListener('click', function () {
-//     getNumber();
-//     diceFace();
-//     getCurrentScoreP1();
-//     //Player1 passe son tour si le dé fait 1, current retourne à 0
-//     if(rollNumber === 1){
-//         currentScore1 = 0;
-//         currentScoreDisplayP1.textContent = '0';
-//         console.log('Le Player 1 est tombé sur le chiffre 1, son current retourne à 0. Au tour du Player2 ! ');
-//         dot1.style.display = 'none';
-//         dot2.style.display = 'inline-block';
-//     };
-// });
-
-//Function add roll score to current for player1
-function getCurrentScoreP1 () {
-    currentScore1 = currentScore1 + rollNumber;
-    currentScoreDisplayP1.textContent = currentScore1;
-    console.log("Player 1 totabilise sur ce round : " + currentScore1 + " points");
-}
-//Function add roll score to current for player2
-function getCurrentScoreP2 () {
-    currentScore2 = currentScore2 + rollNumber;
-    currentScoreDisplayP2.textContent = currentScore2;
-    console.log("Player 2 totabilise sur ce round : " + currentScore2 + " points");
-}
 //Function reset game
 function resetGame(){
+    currentPlayer = "player1"
     globalScoreDisplayP1.textContent = 0;
     globalScoreDisplayP2.textContent = 0;
     currentScoreDisplayP1.textContent = 0;
@@ -76,59 +57,79 @@ function resetGame(){
     currentScore2 = 0;
     dice.src="./images/dice1.png";
     console.log("Nouvelle partie");
-    dot1.style.display = 'inline-block';
-    dot2.style.display = 'none';
+    redDotP1();
 };
 
-//Function player1
+//Reset game when click on newGame Btn
+newGame.addEventListener('click', resetGame);
 
-// // Setting hold Btn
-
-// hold.addEventListener('click', function () {
-//     globalScore1 = globalScore1 + currentScore1;
-//     globalScoreDisplayP1.textContent = globalScore1 + currentScore1;
-//     console.log('Score actuel du joueur 1 : ' + globalScore1 +', au tour du Player 2');
-//     currentScoreDisplayP1.textContent = 0;
-//     //Si le score max est atteint :
-//     if(globalScore1 >= 100) {
-//         alert('Player 1 remporte la partie !')
-//     } else if (dot1.style.display = 'inline-block') {
-//         dot2.style.display = 'inline-block';
-//         dot1.style.display = 'none';}
-// });
 //Setting roll Btn
-roll.addEventListener('click', function() {
-    getNumber();
-    diceFace();
-    //Player1 roll the dice, if roll 1 pass, add points to current if between 2-6
-    if(rollNumber === 1 && currentPlayer == "player1") {
-        currentPlayer = "player2"
-        currentScore1 = 0;
-        currentScoreDisplayP1.textContent = '0';
-        dot1.style.display = 'none';
-        dot2.style.display = 'inline-block';
-        console.log('Le Player 1 est tombé sur le chiffre 1, son current retourne à 0. Au tour du Player2 !');
-        } 
-        
-        else if(rollNumber != 1) {
-            getCurrentScoreP1();
-        }
-    ////Player2 roll the dice, if roll 1 pass, add points to current if between 2-6
-        else if(rollNumber === 1 && currentPlayer == "player2"){
-            currentPlayer = "player1"
-            currentScore2 = 0;
-            currentScoreDisplayP2.textContent = '0';
-            dot1.style.display = 'inline-block';
-            dot2.style.display = 'none';
-            console.log('Le Player 2 est tombé sur le chiffre 1, son current retourne à 0. Au tour du Player1 !');
-            } else if(rollNumber != 1) {
-                getCurrentScoreP2();
+roll.addEventListener('click', () => {
+        getNumber();
+        diceFace();
+//Player1 roll the dice, if roll 1 pass, add points to current if between 2-6
+        if (currentPlayer == "player1") {
+            currentScore1 = currentScore1 + rollNumber;
+            currentScoreDisplayP1.textContent = currentScore1;
+            console.log("Player 1 totabilise sur ce round : " + currentScore1 + " points");
+            if (rollNumber === 1) {
+                currentPlayer = "player2";
+                currentScore1 = 0;
+                currentScoreDisplayP1.textContent = '0';
+                redDotP2();
+                console.log('Le Player 1 est tombé sur le chiffre 1, son current retourne à 0. Au tour du Player2 !');
             }
         }
-);
+//Player2 roll the dice, if roll 1 pass, add points to current if between 2-6
+        else {
+            currentScore2 = currentScore2 + rollNumber;
+            currentScoreDisplayP2.textContent = currentScore2;
+            console.log("Player 2 totabilise sur ce round : " + currentScore2 + " points");
+            if (rollNumber === 1) {
+                currentPlayer = "player1";
+                currentScore2 = 0;
+                currentScoreDisplayP2.textContent = '0';
+                redDotP1();
+                console.log('Le Player 2 est tombé sur le chiffre 1, son current retourne à 0. Au tour du Player1 !');
+            }
+        }
+    });
+    
+//Setting hold Btn
+hold.addEventListener('click', () => {
+//On click if player 1, adding current to global
+    if (currentPlayer == "player1") {
+        currentScoreDisplayP1.textContent = '0';
+        globalScoreDisplayP1.textContent = currentScore1 + globalScore1;
+        globalScore1 = globalScore1 + currentScore1;
+        console.log('Le player 1 rajoute son score au global et obtiens : ' + globalScore1);
+        currentScore1 = 0;
+        currentPlayer = "player2"
+        redDotP2();
+        if(globalScore1 >= 100) {
+            alert('Le player 1 remporte la partie ! Cliquez sur New game pour relancer.')
+        };
+    }
+//On click if player 2, adding current to global
+    else {
+        currentScoreDisplayP2.textContent = '0';
+        globalScoreDisplayP2.textContent = currentScore2 + globalScore2;
+        globalScore2 = globalScore2 + currentScore2;
+        currentScore2 = 0;
+        currentPlayer = "player1"
+        redDotP1();
+        if(globalScore2 >= 100) {
+            alert('Le player 2 remporte la partie ! Cliquez sur New game pour relancer.')
+        };
+    }
+});
 
-//Reset game when click on newGame Btn
-newGame.addEventListener('click', resetGame());
+//TEST DARK MODE
 
+let darkToggle = document.querySelector('#darkToggle');
+
+darkToggle.addEventListener('change', ()=> {
+  document.body.classList.toggle('dark');
+});
         
         
