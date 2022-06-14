@@ -1,14 +1,39 @@
-body {
-    font-family: 'Lato', sans-serif;
-    background: linear-gradient(to right, #F6F6F6 0% 50%, white 50% 0%);
+* {
+    font-family: 'Lato', sans-serif; 
+}
+
+.lightToggle {
+     display: none;
+}
+
+body{
     height: 100vh;
     width: 100vw;
     overflow: hidden
 }
 
+
+.light {
+    background: linear-gradient(to right, #F6F6F6 0% 50%, white 50% 0%);
+};
+
+.lightToggle {
+    display: none;
+};
+
 header {
     margin-right: 4.5em;
 }
+
+#darkToggle {
+    margin-top: 1.2em;
+    margin-left: 1em;
+};
+
+.player1, .player2 {
+    margin-top: 1em;
+}
+
 
 h2 {
     font-size: 3rem;
@@ -25,7 +50,6 @@ h2 {
     background-color: #ff4444;
     border-radius: 25% 10%;
 }
-
 
 .scoreSection {
     position: fixed;
@@ -53,15 +77,11 @@ button.rules {
     display: none;
 }
 
-/* TEST DARK MODE */
 .dark{
     font-family: 'Lato', sans-serif;
     height: 100vh;
     width: 100vw;
     overflow: hidden;
-    background-color: #222;
-    color: #e6e6e6;
+    background: linear-gradient(to right, #505050 0% 50%, #686868 50% 0%);
+    color: #B25353;
 };
-
-
-  

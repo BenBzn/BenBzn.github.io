@@ -71,13 +71,11 @@ roll.addEventListener('click', () => {
         if (currentPlayer == "player1") {
             currentScore1 = currentScore1 + rollNumber;
             currentScoreDisplayP1.textContent = currentScore1;
-            console.log("Player 1 totabilise sur ce round : " + currentScore1 + " points");
             if (rollNumber === 1) {
                 currentPlayer = "player2";
                 currentScore1 = 0;
                 currentScoreDisplayP1.textContent = '0';
                 redDotP2();
-                console.log('Le Player 1 est tombé sur le chiffre 1, son current retourne à 0. Au tour du Player2 !');
             }
         }
 //Player2 roll the dice, if roll 1 pass, add points to current if between 2-6
@@ -90,10 +88,9 @@ roll.addEventListener('click', () => {
                 currentScore2 = 0;
                 currentScoreDisplayP2.textContent = '0';
                 redDotP1();
-                console.log('Le Player 2 est tombé sur le chiffre 1, son current retourne à 0. Au tour du Player1 !');
             }
         }
-    });
+});
     
 //Setting hold Btn
 hold.addEventListener('click', () => {
@@ -102,7 +99,6 @@ hold.addEventListener('click', () => {
         currentScoreDisplayP1.textContent = '0';
         globalScoreDisplayP1.textContent = currentScore1 + globalScore1;
         globalScore1 = globalScore1 + currentScore1;
-        console.log('Le player 1 rajoute son score au global et obtiens : ' + globalScore1);
         currentScore1 = 0;
         currentPlayer = "player2"
         redDotP2();
@@ -124,12 +120,21 @@ hold.addEventListener('click', () => {
     }
 });
 
-//TEST DARK MODE
+//DARK && LIGHT MODE
 
-let darkToggle = document.querySelector('#darkToggle');
+let darkToggle = document.getElementById('darkToggle');
+let lightToggle = document.getElementById('lightToggle');
+let bodyBg = document.getElementById('bg');
 
-darkToggle.addEventListener('change', ()=> {
-  document.body.classList.toggle('dark');
+
+darkToggle.addEventListener('click', ()=> {
+    bodyBg.classList.replace('light', 'dark');
+    darkToggle.style.display = 'none';
+    lightToggle.style.display = 'block';
 });
-        
-        
+
+lightToggle.addEventListener('click', () => {
+    bodyBg.classList.replace('dark', 'light');
+    darkToggle.style.display = 'block';
+    lightToggle.style.display = 'none';
+});

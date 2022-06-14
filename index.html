@@ -11,34 +11,43 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
     <title>Dice game</title>
 </head>
-<body>
+<body class="light" id="bg">
 <!--new game/rules button-->
     <header class="d-flex justify-content-center p-2 newgame d-grid gap-2">
-        <img src="./images/plus.png" height="24" class="mt-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="mt-4 newGame" width="25" height="30" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+            <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+          </svg>
         <button type="button" id="newGame" class="btn btn-danger justify-content-center mt-3 me-4 startBtn">
             New game
         </button>
         <button type="button" class="rules btn btn-danger" data-bs-toggle="modal" data-bs-target="#rules">Rules</button>
-<!--Dark/light thème button TEMP-->    
-        <input type="checkbox" id="darkToggle">
-        <label for="darkToggle">
+<!--Dark/light theme button-->    
+<div class="themetoggle">
+    <svg xmlns="http://www.w3.org/2000/svg" id="darkToggle" width="30" height="30" fill="currentColor" class="bi bi-moon-fill" viewBox="0 0 16 16">
+    <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" id="lightToggle" width="35" height="35" fill="currentColor" class="bi bi-brightness-high-fill lightToggle mt-3" viewBox="0 0 16 16">
+    <path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+  </svg>
+</div>
 <!-- Modal rules -->
         <div class="modal fade" id="rules" tabindex="-1" aria-labelledby="rules" aria-hidden="true">
             <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Règles du jeu</h5>
+                <h5 class="modal-title modalText" id="exampleModalLabel">Règles du jeu</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p>Chaque joueur possède un score temporaire (Affiché CURRENT) et un score global (GLOBAL).
+                    <p class="modalText">Chaque joueur possède un score temporaire (Affiché CURRENT) et un score global (GLOBAL).
                         A chaque tour, le joueur a son score CURRENT initialisé à 0 et peut lancer un dé autant de fois qu'il le souhaite. Le résultat d'un lancer est ajouté au ROUND.
                     </p>
-                    <p>Lors de son tour, le joueur peut décider à tout moment de :<br>
+                    <p class="modalText">Lors de son tour, le joueur peut décider à tout moment de :<br>
                         - Cliquer sur l'option "Hold" qui permet d'envoyer les points du CURRENT vers le GLOBAL. Ce sera alors le tour de l'autre joueur.<br>
                         -Lancer le dé. S'il obtient un 1, son score CURRENT est perdu et c'est la fin de son tour
                     </p>
-                    <p class="fw-bold">Le premier joueur qui atteint les 100 points sur GLOBAL gagne le jeu.</p>
+                    <p class="fw-bold modalText">Le premier joueur qui atteint les 100 points sur GLOBAL gagne le jeu.</p>
                 </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">C'est bon pour moi !</button>
@@ -59,8 +68,8 @@
         </div>
     </main>
 <!--Dice-->
-    <div class="d-flex justify-content-center mt-5">
-        <img src="./images/dice1.png" title="dice" alt="dice" id="dice" class="img-fluid">
+    <div class="d-flex justify-content-center mt-3">
+        <img src="./images/dice1.png" title="dice" alt="dice" id="dice" class="mt-5 img-fluid diceFace">
     </div>
 <!--Player 1 current score-->
     <section class="scoreSection container-fluid d-flex justify-content-around">
@@ -83,33 +92,8 @@
             <p id="currentScore2" class="text-center">0</p>
         </div>
     </section>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
